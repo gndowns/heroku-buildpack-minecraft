@@ -20,6 +20,11 @@ bin/sync
 eval "while true; do sleep ${AWS_SYNC_INTERVAL:-60}; bin/sync; done &"
 sync_pid=$!
 
+#pingpong
+eval "while true; do sleep 300; curl https://dadpong.herokuapp.com; echo "ponging"; done &" 
+
+
+
 # create server config
 echo "server-port=${mc_port}" >> /app/server.properties
 touch whitelist.json
